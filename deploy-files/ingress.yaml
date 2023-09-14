@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: my-ingress
+  #annotations:
+  #nginx.ingress.kubernetes.io/ingress-class: nginx
+spec:
+  ingressClassName: nginx  # Set the ingressClassName directly
+  rules:
+    - host: yassen.app.caas-cnp-apps-ismlab.com.intraorange  # Replace with your desired host or domain
+      http:
+        paths:
+          - path: /  # Replace with your desired path or URL prefix
+            pathType: Prefix
+            backend:
+              service:
+                name: my-multi-container-service
+                port:
+                  number: 80
+
